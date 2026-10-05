@@ -3,24 +3,24 @@ public class VariableNaming {
 
   public void calculateNumbers() {
     /*
-     * パターン1
+     * パターン1：camelCase記法
      */
-    int first_number = 10;
-    int Second_Number = 20;
+    int firstNumber = 10;
+    int secondNumber = 20;
 
     /*
-     * パターン2
+     * パターン2：aやxだと検索しずらいので変更
      */
-    int a = 5;
-    int x = 3;
+    int thirdNumber = 5;
+    int fourthNumber = 3;
 
     /*
-     * パターン3
+     * パターン3：予約語なので変更
      */
-    int return = 100;
+    int fifthNumber = 100;
 
-    int total_result = first_number + Second_Number;
-    int sum = a + x + return;
+    int total_result = firstNumber + secondNumber;
+    int sum = thirdNumber + fourthNumber + fifthNumber;
 
     System.out.println(total_result);
     System.out.println(sum);

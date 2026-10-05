@@ -1,37 +1,17 @@
 // 問3.以下のクラスを適切に分割してください。
+
+// ユーザー管理
+
+import java.util.ArrayList;
+import java.util.List;
+
 public class UserService {
 
   private final UserMapper userMapper;
-  private final PasswordEncoder passwordEncoder;
 
-  // ユーザー登録
-  public User register(UserRegistrationForm form) {
-    User existing = userMapper.findByEmail(form.getEmail());
-    if (existing != null) {
-      throw new IllegalArgumentException("既に登録されています");
-    }
-
-    User user = new User();
-    user.setName(form.getName());
-    user.setEmail(form.getEmail());
-    user.setPassword(passwordEncoder.encode(form.getPassword()));
-    userMapper.insert(user);
-
-    return userMapper.findById(user.getId());
-  }
-
-  // ログイン認証
-  public User authenticate(LoginForm form) {
-    User user = userMapper.findByEmail(form.getEmail());
-    if (user == null) {
-      throw new IllegalArgumentException("認証失敗");
-    }
-
-    if (!passwordEncoder.matches(form.getPassword(), user.getPassword())) {
-      throw new IllegalArgumentException("認証失敗");
-    }
-
-    return user;
+  // コンストラクタ
+  public UserService(UserMapper userMapper) {
+    this.userMapper = userMapper;
   }
 
   // ユーザー一覧取得
